@@ -1,5 +1,5 @@
-import 'package:bouncing_widgets/flutter_bouncing_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bouncing_widgets/flutter_bouncing_widgets.dart';
 
 void main() => runApp(const Example());
 
