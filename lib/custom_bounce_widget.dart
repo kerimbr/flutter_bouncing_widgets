@@ -30,8 +30,7 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
 
   late AnimationController _controller;
   late double _scale;
-  GlobalKey _childKey = GlobalKey();
-  bool _isOutside = false;
+  final GlobalKey _childKey = GlobalKey();
   Widget get child => widget.child;
   VoidCallback get onPressed => widget.onPressed;
   double get scaleFactor => widget.scaleFactor;
@@ -132,7 +131,7 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
 
   _onDragUpdate(DragUpdateDetails details, BuildContext context) {
     final Offset touchPosition = details.globalPosition;
-    _isOutside = _isOutsideChildBox(touchPosition);
+    _isOutsideChildBox(touchPosition);
   }
 
 
