@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import '../flutter_bouncing_widgets.dart';
 import 'Constants/bouncing_widget_color.dart';
 
 class BounceElevatedButton extends StatelessWidget {
-
   final VoidCallback onPressed;
   final Widget? child;
   final double size;
@@ -33,12 +31,10 @@ class BounceElevatedButton extends StatelessWidget {
     this.gradient,
     this.shape,
     this.boxShadow,
-
     this.isScrollable = false,
     this.scaleFactor = 1,
     this.duration = const Duration(milliseconds: 200),
     this.canReverse = false,
-
     Key? key,
   }) : super(key: key);
 
@@ -52,13 +48,14 @@ class BounceElevatedButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: borderRadius ?? BorderRadius.circular(4),
-          boxShadow: boxShadow ?? [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              offset: const Offset(0, 2),
-              blurRadius: 4,
-            ),
-          ],
+          boxShadow: boxShadow ??
+              [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: const Offset(0, 2),
+                  blurRadius: 4,
+                ),
+              ],
         ),
         child: child != null
             ? Center(

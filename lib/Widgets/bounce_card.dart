@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import '../../flutter_bouncing_widgets.dart';
 import 'Constants/bouncing_widget_color.dart';
 
 class BounceCard extends StatelessWidget {
-
   final VoidCallback onPressed;
 
   final Widget? child;
@@ -27,7 +25,6 @@ class BounceCard extends StatelessWidget {
   const BounceCard({
     required this.onPressed,
     this.child,
-
     this.color = BouncingWidgetColor.LIGHT,
     this.shadowColor,
     this.elevation,
@@ -37,12 +34,10 @@ class BounceCard extends StatelessWidget {
     this.borderOnForeground = true,
     this.semanticContainer = true,
     this.margin,
-
     this.isScrollable = false,
     this.scaleFactor = 1,
     this.duration = const Duration(milliseconds: 200),
     this.canReverse = false,
-
     Key? key,
   }) : super(key: key);
 

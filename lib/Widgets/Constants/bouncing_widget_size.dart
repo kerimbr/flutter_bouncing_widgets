@@ -1,6 +1,4 @@
-
 class BouncingWidgetSize {
-
   static const double TINY = 24;
 
   static const double SMALL = 30;

@@ -7,7 +7,6 @@ class BounceTextButton extends StatelessWidget {
   final double size;
   final double widthFactor;
 
-
   final bool isScrollable;
   final double scaleFactor;
   final Duration duration;

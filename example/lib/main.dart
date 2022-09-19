@@ -24,7 +24,8 @@ class Example extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
                 BounceElevatedButton(
-                  onPressed: () => showSnackBar(context, 'Clicked BounceElevatedButton'),
+                  onPressed: () =>
+                      showSnackBar(context, 'Clicked BounceElevatedButton'),
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(10),
                   child: const Text(
@@ -38,12 +39,14 @@ class Example extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 BounceTextButton(
-                  onPressed: () => showSnackBar(context, 'Clicked BounceTextButton'),
+                  onPressed: () =>
+                      showSnackBar(context, 'Clicked BounceTextButton'),
                   child: Text('Bounce Text Button'),
                 ),
                 const SizedBox(height: 20),
                 BounceCircleAvatar(
-                  onPressed: () => showSnackBar(context, 'Clicked BounceCircleAvatar'),
+                  onPressed: () =>
+                      showSnackBar(context, 'Clicked BounceCircleAvatar'),
                   backgroundColor: Colors.red.withOpacity(0.1),
                   child: const Icon(Icons.add, color: Colors.red),
                 ),
@@ -51,7 +54,8 @@ class Example extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: BounceCard(
-                    onPressed: () => showSnackBar(context, 'Clicked BounceCard'),
+                    onPressed: () =>
+                        showSnackBar(context, 'Clicked BounceCard'),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -97,10 +101,12 @@ class Example extends StatelessWidget {
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     itemCount: 20,
-                    separatorBuilder: (context, index) => const SizedBox(height: 20),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 20),
                     itemBuilder: (context, index) {
                       return CustomBounceWidget(
-                        onPressed: () => showSnackBar(context, 'Clicked Card $index'),
+                        onPressed: () =>
+                            showSnackBar(context, 'Clicked Card $index'),
                         isScrollable: true,
                         child: Card(
                           color: Colors.redAccent,
@@ -128,11 +134,9 @@ class Example extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
   }
 
-
-  Widget extensionExample(){
+  Widget extensionExample() {
     return Container().bounce(
       onPressed: () {},
     );
   }
-
 }

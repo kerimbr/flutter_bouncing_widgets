@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomBounceWidget extends StatefulWidget {
@@ -8,8 +7,6 @@ class CustomBounceWidget extends StatefulWidget {
   final Duration duration;
   final bool canReverse;
   final bool isScrollable;
-
-
 
   const CustomBounceWidget({
     Key? key,
@@ -25,17 +22,23 @@ class CustomBounceWidget extends StatefulWidget {
   State<CustomBounceWidget> createState() => _CustomBounceWidgetState();
 }
 
-class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTickerProviderStateMixin {
-
-
+class _CustomBounceWidgetState extends State<CustomBounceWidget>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late double _scale;
   final GlobalKey _childKey = GlobalKey();
+  bool _isOutside = false;
+
   Widget get child => widget.child;
+
   VoidCallback get onPressed => widget.onPressed;
+
   double get scaleFactor => widget.scaleFactor;
+
   Duration get duration => widget.duration;
+
   bool get _canReverse => widget.canReverse;
+
   bool get _isScrollable => widget.isScrollable;
 
   @override
@@ -46,8 +49,8 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
       lowerBound: 0.0,
       upperBound: 0.1,
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
 
     super.initState();
   }
@@ -82,8 +85,6 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
     onPressed();
   }
 
-
-
   _onLongPressEnd(LongPressEndDetails details, BuildContext context) {
     final Offset touchPosition = details.globalPosition;
 
@@ -95,9 +96,11 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
   }
 
   _onDragEnd(DragEndDetails details) {
+    if (!_isOutside) {
+      onPressed();
+    }
     _reverseAnimation();
   }
-
 
   _reverseAnimation() {
     if (mounted) {
@@ -106,7 +109,8 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
   }
 
   bool _isOutsideChildBox(Offset touchPosition) {
-    final RenderBox? childRenderBox = _childKey.currentContext?.findRenderObject() as RenderBox?;
+    final RenderBox? childRenderBox =
+        _childKey.currentContext?.findRenderObject() as RenderBox?;
     if (childRenderBox == null) {
       return true;
     }
@@ -119,7 +123,6 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
         touchPosition.dy > childPosition.dy + childSize.height);
   }
 
-
   void _onTap() {
     _controller.forward();
 
@@ -131,14 +134,12 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
 
   _onDragUpdate(DragUpdateDetails details, BuildContext context) {
     final Offset touchPosition = details.globalPosition;
-    _isOutsideChildBox(touchPosition);
+    _isOutside = _isOutsideChildBox(touchPosition);
   }
-
 
   @override
   Widget build(BuildContext context) {
     _scale = 1 - (_controller.value * scaleFactor);
-
 
     if (_isScrollable) {
       return GestureDetector(
@@ -149,7 +150,7 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
           child: child,
         ),
       );
-    }else{
+    } else {
       return GestureDetector(
         onTapDown: _onTapDown,
         onTapUp: _onTapUp,
@@ -165,9 +166,5 @@ class _CustomBounceWidgetState extends State<CustomBounceWidget> with SingleTick
         ),
       );
     }
-
   }
-
 }
-
-

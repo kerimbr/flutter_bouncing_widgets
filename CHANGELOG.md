@@ -15,3 +15,8 @@ changed package description
 changed package license
 added dart doc
 optimized code
+
+
+## 1.0.3
+
+fixed outside click bug

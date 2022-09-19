@@ -1,6 +1,5 @@
 library flutter_bouncing_widgets;
 
-
 export 'Extensions/bounce_extension.dart';
 export 'custom_bounce_widget.dart';
 
